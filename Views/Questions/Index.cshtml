@@ -13,8 +13,23 @@
     {
         <p>No Questions Yet!</p>
     }
-    @foreach(string q in ViewBag.questions)
-    {
-        <li>@q</li>
-    }
+    
+    
+       <table class="table">
+           <tr>
+               <th>Id</th>
+               <th>Question</th>
+                <th>Answer</th>
+            </tr>
+        @foreach (var qst in ViewBag.questions)
+         {   <tr>
+               <td>@qst.Id</td>
+             
+            <td>@qst.Name</td>
+          
+            <td>@qst.Answer</td>
+        </tr>
+         }  
+        </table>
+    
 </ul>

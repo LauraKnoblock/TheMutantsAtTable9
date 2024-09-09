@@ -4,9 +4,18 @@
 @{
 }
 
-<h1>Add a question</h1>
+<h1>Add a Question</h1>
 
 <form method="post">
-    <input name="name" type="text" />
-    <input type="submit" value="Add Questions" />
+    <div class="form-group">
+        <label>
+            Question
+            <input type="text" name="name" />
+        </label>
+        <label>
+            Answer
+        <input type="text" name="answer" />
+        </label>
+    </div>
+    <input type="submit" value="Add Question" />
 </form>

@@ -28,3 +28,4 @@ C:\Users\laura\source\repos\TheMutantsAtTable9\obj\Debug\net8.0\refint\TheMutant
 C:\Users\laura\source\repos\TheMutantsAtTable9\obj\Debug\net8.0\TheMutantsAtTable9.pdb
 C:\Users\laura\source\repos\TheMutantsAtTable9\obj\Debug\net8.0\TheMutantsAtTable9.genruntimeconfig.cache
 C:\Users\laura\source\repos\TheMutantsAtTable9\obj\Debug\net8.0\ref\TheMutantsAtTable9.dll
+C:\Users\laura\source\repos\TheMutantsAtTable9\obj\Debug\net8.0\TheMutantsAtTable9.sourcelink.json
