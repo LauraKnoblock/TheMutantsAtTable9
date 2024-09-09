@@ -36,6 +36,7 @@ namespace TheMutantsAtTable9.Controllers
                 {
                     Name = addQuestionViewModel.Name,
                     Answer = addQuestionViewModel.Answer,
+                    Category = addQuestionViewModel.Category,
                 };
                 QuestionData.Add(newQuestion);
 

@@ -6,6 +6,7 @@ namespace TheMutantsAtTable9.Models
     {
         public string? Name { get; set; }
         public string? Answer { get; set; }
+        public Category Category { get; set; }
 
         public int Id { get; }
         static private int nextId = 1;

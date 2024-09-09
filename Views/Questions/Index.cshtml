@@ -24,16 +24,16 @@
        <table class="table">
            <tr>
                <th>Id</th>
+               <th>Category</th>
                <th>Question</th>
-                <th>Answer</th>
+               <th>Answer</th>
             </tr>
         @foreach (var qst in Model)
          {   
              <tr>
                <td>@qst.Id</td>
-             
+               <td>@qst.Category</td>
                <td>@qst.Name</td>
-          
                <td>@qst.Answer</td>
                 <td><a asp-controller="Questions" asp-action="Edit" asp-route-id="@qst.Id">Edit Question</a></td>
         </tr>
