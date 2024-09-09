@@ -4,8 +4,8 @@ namespace TheMutantsAtTable9.Models
 {
     public class Question
     {
-        public string Name { get; set; }
-        public string Answer { get; set; }
+        public string? Name { get; set; }
+        public string? Answer { get; set; }
 
         public int Id { get; }
         static private int nextId = 1;
@@ -24,7 +24,7 @@ namespace TheMutantsAtTable9.Models
             nextId++;
         }
 
-        public override string ToString()
+        public override string? ToString()
         {
             return Name;
         }

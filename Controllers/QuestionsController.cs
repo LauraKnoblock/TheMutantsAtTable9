@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TheMutantsAtTable9.Models;
 using TheMutantsAtTable9.Data;
+using TheMutantsAtTable9.ViewModels;
 
 namespace TheMutantsAtTable9.Controllers
 {
@@ -15,22 +16,32 @@ namespace TheMutantsAtTable9.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.questions = QuestionData.GetAll();
-            return View();
+            List<Question> questions = new List<Question>(QuestionData.GetAll());
+            return View(questions);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            return View();
+            AddQuestionViewModel addQuestionViewModel = new AddQuestionViewModel();
+            return View(addQuestionViewModel);
         }
         [HttpPost]
-        [Route("/Questions/Add")]
-        public IActionResult NewQuestion(Question newQuestion)
+        public IActionResult Add(AddQuestionViewModel addQuestionViewModel)
         {
-            QuestionData.Add(newQuestion);
+            if (ModelState.IsValid)
+            {
+                Question newQuestion = new Question
 
-            return Redirect("/Questions");
+                {
+                    Name = addQuestionViewModel.Name,
+                    Answer = addQuestionViewModel.Answer,
+                };
+                QuestionData.Add(newQuestion);
+
+                return Redirect("/Questions");
+            }
+            return View(addQuestionViewModel);
         }
 
         public IActionResult Delete()

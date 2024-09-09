@@ -3,33 +3,41 @@
 *@
 @{
 }
+@using TheMutantsAtTable9.Models
+@model List<Question>
 
 <h1> Questions</h1>
 <p>
     <a asp-controller="Questions" asp-action="Add">Add a Question</a>
 </p>
+
 <ul>
-    @if(ViewBag.questions.Count == 0)
+    @if(Model.Count == 0)
     {
         <p>No Questions Yet!</p>
     }
-    
-    
+    else
+    {
+        <p>
+            <a asp-controller="Questions" asp-action="Delete">Delete a Question</a>
+        </p>
        <table class="table">
            <tr>
                <th>Id</th>
                <th>Question</th>
                 <th>Answer</th>
             </tr>
-        @foreach (var qst in ViewBag.questions)
-         {   <tr>
+        @foreach (var qst in Model)
+         {   
+             <tr>
                <td>@qst.Id</td>
              
-            <td>@qst.Name</td>
+               <td>@qst.Name</td>
           
-            <td>@qst.Answer</td>
+               <td>@qst.Answer</td>
+                <td><a asp-controller="Questions" asp-action="Edit" asp-route-id="@qst.Id">Edit Question</a></td>
         </tr>
          }  
         </table>
-    
+    }
 </ul>

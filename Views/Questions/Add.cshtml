@@ -3,19 +3,22 @@
 *@
 @{
 }
+@using TheMutantsAtTable9.ViewModels
+@model AddQuestionViewModel
 
 <h1>Add a Question</h1>
 
-<form method="post">
+<form method="post" asp-controller="Questions" asp-action="Add">
     <div class="form-group">
-        <label>
-            Question
-            <input type="text" name="name" />
-        </label>
-        <label>
-            Answer
-        <input type="text" name="answer" />
-        </label>
+        <label asp-for="Name">Question</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Answer">Answer</label>
+        <input asp-for="Answer" />
+        <span asp-validation-for="Answer" class="text-danger"></span>
+
     </div>
     <input type="submit" value="Add Question" />
 </form>

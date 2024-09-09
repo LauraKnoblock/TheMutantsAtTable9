@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>@ViewBag.title</h1>
+
+<form method="post" action="/questions/edit">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" type="text" value="@ViewBag.questionToEdit.Name" />
+    </div>
+    <div class="form-group">
+        <label for="answer">Answer</label>
+        <input name="answer" type="text" value="@ViewBag.questionToEdit.Answer" />
+    </div>
+    <input type="hidden" value="@ViewBag.questionToEdit.Id" name="questionId">
+
+    <input type="submit" value="Edit Question" />
+
+</form>
