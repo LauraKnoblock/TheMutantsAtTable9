@@ -8,21 +8,17 @@ namespace TheMutantsAtTable9.Models
         public string? Answer { get; set; }
         public Category Category { get; set; }
 
-        public int Id { get; }
-        static private int nextId = 1;
+        public int Id { get; set; }
 
         public Question()
         {
-            Id = nextId;
-            nextId++;
         }
 
         public Question(string name, string answer)
         {
             Name = name;
             Answer = answer;
-            Id = nextId;
-            nextId++;
+            
         }
 
         public override string? ToString()

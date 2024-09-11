@@ -12,11 +12,16 @@ namespace TheMutantsAtTable9.Controllers
     public class QuestionsController : Controller
 
     {
+        private QuestionDbContext context;
 
+        public QuestionsController (QuestionDbContext dbContext)
+        {
+            context= dbContext;
+        }
 
         public IActionResult Index()
         {
-            List<Question> questions = new List<Question>(QuestionData.GetAll());
+            List<Question> questions = context.Questions.ToList();
             return View(questions);
         }
 
@@ -38,8 +43,8 @@ namespace TheMutantsAtTable9.Controllers
                     Answer = addQuestionViewModel.Answer,
                     Category = addQuestionViewModel.Category,
                 };
-                QuestionData.Add(newQuestion);
-
+                context.Questions.Add(newQuestion);
+                context.SaveChanges();
                 return Redirect("/Questions");
             }
             return View(addQuestionViewModel);
@@ -47,7 +52,7 @@ namespace TheMutantsAtTable9.Controllers
 
         public IActionResult Delete()
         {
-            ViewBag.questions = QuestionData.GetAll();
+            ViewBag.questions = context.Questions.ToList();
             return View();
         }
 
@@ -56,8 +61,11 @@ namespace TheMutantsAtTable9.Controllers
         {
             foreach (int questionId in questionIds)
             {
-                QuestionData.Remove(questionId);
+                Question? theQuestion = context.Questions.Find(questionId);
+                context.Questions.Remove(theQuestion);
             }
+
+            context.SaveChanges();
             return Redirect("/Questions");
         }
     }
