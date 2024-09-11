@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<TheMutantsAtTable9.Models.QuestionCategory>
+
+<h1>All Trivia Categories</h1>
+
+<table>
+    <tr>
+        <th>Category Name</th>
+    </tr>
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.Name</td>
+        </tr>
+    }
+</table>
