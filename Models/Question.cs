@@ -6,7 +6,9 @@ namespace TheMutantsAtTable9.Models
     {
         public string? Name { get; set; }
         public string? Answer { get; set; }
-        public Category Category { get; set; }
+        public QuestionCategory Category { get; set; }
+        
+        public int QuestionId { get; set; }
 
         public int Id { get; set; }
 

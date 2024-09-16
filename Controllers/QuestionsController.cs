@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using TheMutantsAtTable9.Models;
 using TheMutantsAtTable9.Data;
 using TheMutantsAtTable9.ViewModels;
+using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace TheMutantsAtTable9.Controllers
 {
@@ -21,32 +23,37 @@ namespace TheMutantsAtTable9.Controllers
 
         public IActionResult Index()
         {
-            List<Question> questions = context.Questions.ToList();
+            List<Question> questions = context.Questions.Include(e => e.Category).ToList();
             return View(questions);
         }
 
         [HttpGet]
         public IActionResult Add()
         {
-            AddQuestionViewModel addQuestionViewModel = new AddQuestionViewModel();
+            List<QuestionCategory> categories = context.Categories.ToList();
+            AddQuestionViewModel addQuestionViewModel = new AddQuestionViewModel(categories);
             return View(addQuestionViewModel);
         }
+
         [HttpPost]
         public IActionResult Add(AddQuestionViewModel addQuestionViewModel)
         {
             if (ModelState.IsValid)
             {
+                QuestionCategory theCategory = context.Categories.Find(addQuestionViewModel.CategoryId);
                 Question newQuestion = new Question
-
                 {
                     Name = addQuestionViewModel.Name,
                     Answer = addQuestionViewModel.Answer,
-                    Category = addQuestionViewModel.Category,
+                    Category = theCategory,
                 };
+
                 context.Questions.Add(newQuestion);
                 context.SaveChanges();
+
                 return Redirect("/Questions");
             }
+
             return View(addQuestionViewModel);
         }
 
